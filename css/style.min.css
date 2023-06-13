@@ -1,3 +1,10 @@
+
+img[alt="cup of coffe"]{
+    width: 200px;
+    height: 200px;
+    object-fit: fill;
+}
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
