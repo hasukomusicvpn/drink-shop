@@ -36,7 +36,7 @@ document.getElementById("submit-order").onclick = async() => {
           quantity: cusQuantity.value,
           address: cusAddress.value,
         });
-        console.log("Document written with ID: ", docRef.id);
+        alert('Order Successful!');
       } catch (e) {
         console.error("Error adding document: ", e);
       }
