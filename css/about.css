@@ -10,3 +10,14 @@ div h5[class="mb-3"]{
     font-family: "Montserrat",sans-serif;
 }
 
+
+img[alt="founder"]{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+#minhkhai{
+    object-position: 0px 0px;
+}
