@@ -27,7 +27,6 @@
   let drinkName = document.getElementById("drinkName");
   let drinkDescription = document.getElementById("drinkDescription");
   let drinkPrice = document.getElementById("drinkPrice");
-  let drinkCode = document.getElementById("drinkCode");
   let drinkImage = document.getElementById("drinkImage");
 
 
@@ -37,7 +36,6 @@
           drinkName: drinkName.value,
           description: drinkDescription.value,
           price: drinkPrice.value,
-          code: drinkCode.value,
           image: drinkImage.value,
         });
         alert('Drink Added!');

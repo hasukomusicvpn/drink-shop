@@ -27,16 +27,14 @@ querySnapshot.forEach((doc) => {
     console.log(doc.data());
     let drinkOutput = document.createElement('div');
     drinkOutput.innerHTML = `
-    <div class="row align-items-center mb-5">
-    <div class="col-4 col-sm-3">
-        <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-1.jpg" alt="">
-        <h5 class="menu-price">$5</h5>
+    <div>
+        <img class=" rounded-circle drink-image" src="${doc.data().image}" alt="">
+        <h5 class="">${doc.data().price}</h5>
     </div>
-    <div class="col-8 col-sm-9">
-        <h4>Black Coffee</h4>
-        <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor</p>
-    </div>
-</div>`;
+    <div>
+        <h4>${doc.data().drinkName}</h4>
+        <p>${doc.data().description}</p>
+    </div>`;
 
     const container = document.getElementById("container");
     container.appendChild(drinkOutput)
