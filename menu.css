@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: bisque;
+    display: flex;
+}
+
+.drink {
+    background-color: white;
+    width: 200px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.drink-image {
+    height: 150px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.drink-1 {
+    background-image: url('https://wallpaperaccess.com/full/3215779.jpg');
+}
+
+.drink-2 {
+    background-image: url('https://images4.alphacoders.com/829/829830.jpg');
+}
+
+.drink-3 {
+    background-image: url('https://uhdwallpapers.org/uploads/cache/1467805977/cold-summer-drink_600x338-mm-90.jpg');
+}
+
+.drink-4 {
+    background-image: url('https://i.pinimg.com/736x/4d/48/88/4d4888d81c38f50819ce3f46f1f4f335.jpg');
+}
+
+.drink-5 {
+    background-image: url('https://c.wallhere.com/photos/8c/b3/3750x2500_px_cocktails_Palm_Trees_sea_swimming_Pool_tropical-816778.jpg!d');
+}
+
+.drink h2 {
+    padding: 10px;
+}
+
+.drink p {
+    padding: 10px;
+}
+
+.drink a {
+    background-color: black;
+    color: white;
+    display: 15px 20px;
+    text-align: center;
+    margin: 20px 50px;
+}
+
+.drink:hover {
+    background-color: rgb(62, 62, 62);
+}
