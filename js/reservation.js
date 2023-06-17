@@ -22,18 +22,16 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 let cusName = document.getElementById("cusName");
-let cusEmail = document.getElementById("cusEmail");
 let cusPhone = document.getElementById("cusPhone");
 let cusQuantity = document.getElementById("cusQuantity");
 let cusAddress = document.getElementById("cusAddress");
-let cusCode = document.getElementById("cusCode");
+let cusDrink = document.getElementById("cusDrink");
 
 document.getElementById("submit-order").onclick = async () => {
     try {
-        const docRef = await addDoc(collection(db, "customers"), {
-            drink: cusCode.value,
+        const docRef = await addDoc(collection(db, "orders"), {
+            drink: cusDrink.value,
             name: cusName.value,
-            email: cusEmail.value,
             phone: cusPhone.value,
             quantity: cusQuantity.value,
             address: cusAddress.value,
