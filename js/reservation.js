@@ -26,19 +26,21 @@ let cusEmail = document.getElementById("cusEmail");
 let cusPhone = document.getElementById("cusPhone");
 let cusQuantity = document.getElementById("cusQuantity");
 let cusAddress = document.getElementById("cusAddress");
+let cusCode = document.getElementById("cusCode");
 
-document.getElementById("submit-order").onclick = async() => {
+document.getElementById("submit-order").onclick = async () => {
     try {
         const docRef = await addDoc(collection(db, "customers"), {
-          name: cusName.value,
-          email: cusEmail.value,
-          phone: cusPhone.value,
-          quantity: cusQuantity.value,
-          address: cusAddress.value,
+            drink: cusCode.value,
+            name: cusName.value,
+            email: cusEmail.value,
+            phone: cusPhone.value,
+            quantity: cusQuantity.value,
+            address: cusAddress.value,
         });
         alert('Order Successful!');
-      } catch (e) {
+    } catch (e) {
         console.error("Error adding document: ", e);
-      }
-      
+    }
+
 }
