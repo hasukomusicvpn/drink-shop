@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -55,7 +55,13 @@ querySnapshot.forEach((doc) => {
     <td>${doc.data().quantity}</td>
     <td>${doc.data().phone}</td>
     <td>${doc.data().address}</td>
+    <td>${doc.id}</td>
   `;
     const orderList = document.getElementById("order-list");
     orderList.appendChild(orderRow);
 });
+
+document.getElementById("deleteSubmit").onclick = async() => {
+    const drinkID = document.getElementById("deleteInput");
+    await deleteDoc(doc(db, "orders", drinkID.value));
+}

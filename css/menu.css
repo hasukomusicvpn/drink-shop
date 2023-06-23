@@ -1,5 +1,69 @@
-.drink-image{
-    width: 200px;
+.drink-items{
+    display: grid;
+    position: relative;
+    grid-template-rows: auto 1fr;
+    border-radius: 15px;
+    box-shadow: 0px 14px 58px -27px rgba(0,0,0,0.83);
+    -webkit-box-shadow: 0px 14px 58px -27px rgba(0,0,0,0.83);
+    -moz-box-shadow: 0px 14px 58px -27px rgba(0,0,0,0.83);
+    margin: 0 20px;
+    height: 500px;
+}
+
+.drink-items img{
+    position: relative;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
     height: 200px;
     object-fit: cover;
+}
+
+.details{
+    padding: 20px 10px;
+    display: grid;
+    grid-template-rows: auto 1fr 50px;
+    grid-row-gap: 15px;
+}
+
+.details-sub{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.details-sub>h5{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.price{
+    text-align: right;
+}
+
+.details>p{
+    color: #555;    
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    align-self: stretch;
+}
+
+.details>button{
+    background-color: rgb(218, 159, 91);
+    width: 180px;
+    border: none;
+    border-radius: 5px;
+}
+
+.details button a{
+    color: #212529;
+    font-size: 16px;
+    font-weight: 600;  
+    text-decoration: none; 
+}
+
+#container{
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(350px,1fr));
+    grid-gap: 20px 40px;
 }
