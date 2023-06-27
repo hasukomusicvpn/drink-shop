@@ -48,14 +48,14 @@
 }
 
 .details>button{
-    background-color: rgb(218, 159, 91);
+    background-color: #30b8c2;
     width: 180px;
     border: none;
     border-radius: 5px;
 }
 
 .details button a{
-    color: #212529;
+    color: #fff;
     font-size: 16px;
     font-weight: 600;  
     text-decoration: none; 

@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,13 +22,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
+const auth = getAuth();
+
 
 const querySnapshot = await getDocs(collection(db, "drinks"));
 querySnapshot.forEach((doc) => {
     console.log(doc.data());
     let drinkOutput = document.createElement('div');
     drinkOutput.innerHTML = `
-    <div class="drink-items">
+    <div class="drink-items special-signed-in">
         <img src="${doc.data().image}">
         <div class="details">
             <div class="details-sub">
@@ -41,5 +44,37 @@ querySnapshot.forEach((doc) => {
 
     const container = document.getElementById("container");
     container.appendChild(drinkOutput);
-
 });
+
+
+const loggedOutLinks = document.querySelectorAll('.signed-out');
+const loggedInLinks = document.querySelectorAll('.signed-in');
+const specialLoggedInLinks = document.querySelectorAll('.special-signed-in')
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        loggedInLinks.forEach(item => item.style.display = 'block');
+        loggedOutLinks.forEach(item => item.style.display = 'none');
+        specialLoggedInLinks.forEach(item => item.style.display = 'grid');
+    } else {
+        // User is signed out
+        loggedInLinks.forEach(item => item.style.display = 'none');
+        loggedOutLinks.forEach(item => item.style.display = 'block');
+        specialLoggedInLinks.forEach(item => item.style.display = 'none');
+        document.getElementById("navbar").style.backgroundColor = '#1aa3ad';
+    }
+});
+
+const logout = document.querySelector('#logout-button');
+logout.addEventListener('click', (e) => {
+    signOut(auth).then(() => {  
+        //user signed in
+    }).catch((error) => {
+        // An error happened.
+    });
+
+})
+
+console.log(loggedInLinks);

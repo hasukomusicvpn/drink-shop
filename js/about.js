@@ -23,56 +23,27 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const auth = getAuth();
-const user = auth.currentUser;
 
-let cusName = document.getElementById("cusName");
-let cusPhone = document.getElementById("cusPhone");
-let cusQuantity = document.getElementById("cusQuantity");
-let cusAddress = document.getElementById("cusAddress");
-let cusDrink = document.getElementById("cusDrink");
-
-const loggedOutLinks = document.querySelectorAll('.signed-out');
-const loggedInLinks = document.querySelectorAll('.signed-in');
-await onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
-        localStorage.setItem("user uid", uid);
-        loggedInLinks.forEach(item => item.style.display = 'block');
-        loggedOutLinks.forEach(item => item.style.display = 'none');
+        alert("user signed in");
+        // ...
     } else {
         // User is signed out
-        loggedInLinks.forEach(item => item.style.display = 'none');
-        loggedOutLinks.forEach(item => item.style.display = 'block');
-        document.getElementById("navbar").style.backgroundColor = '#1aa3ad';
+        alert("user signed out");
+        // ...
     }
 });
 
 const logout = document.querySelector('#logout-button');
 logout.addEventListener('click', (e) => {
     signOut(auth).then(() => {  
-        //user signed out
+        //user signed in
     }).catch((error) => {
         // An error happened.
     });
 
-});
-
-
-document.getElementById("submit-order").onclick = async () => {
-    try {
-        const docRef = await addDoc(collection(db, "orders"), {
-            drink: cusDrink.value,
-            name: cusName.value,
-            phone: cusPhone.value,
-            quantity: cusQuantity.value,
-            address: cusAddress.value,
-            uid: localStorage.getItem("user uid"),
-        });
-        alert('Order Successful!');
-    } catch (e) {
-        console.error("Error adding document: ", e);
-    }
-
-}
+})

@@ -23,13 +23,14 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/about.css">
+    <link href="css/style.min.css" rel="stylesheet">
+
 </head>
 
 <body>
     <!-- Navbar Start -->
-    <div class="container-fluid p-0 nav-bar">
+    <div class="container-fluid p-0 nav-bar" id="navbar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="index.html" class="navbar-brand px-lg-4 m-0">
                 <h1 class="m-0 display-4 text-uppercase text-white">MOONBUCKS</h1>
@@ -39,11 +40,14 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link active">About</a>
-                    <a href="service.html" class="nav-item nav-link">Service</a>
-                    <a href="menu.html" class="nav-item nav-link">Menu</a>
-                    <a href="reservation.html" class="nav-item nav-link">Reservation</a>
+                    <a href="index.html" class="nav-item nav-link signed-in" style="display: none;">Home</a>
+                    <a href="about.html" class="nav-item nav-link signed-in active" style="display: none;">About</a>
+                    <a href="service.html" class="nav-item nav-link signed-in" style="display: none;">Service</a>
+                    <a href="menu.html" class="nav-item nav-link signed-in" style="display: none;">Menu</a>
+                    <a href="reservation.html" class="nav-item nav-link signed-in" style="display: none;">Reservation</a>
+                    <a href="login.html" class="nav-item nav-link signed-out" style="display: none;">Log In</a>
+                    <a href="#" class="nav-item nav-link signed-in" style="display: none;">Account</a>
+                    <a href="#" class="nav-item nav-link signed-in" id="logout-button" style="display: none;">Sign Out</a>
                 </div>
             </div>
         </nav>
@@ -52,7 +56,7 @@
 
 
     <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom signed-in" style="display: none;">
         <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
             <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">About Us</h1>
             <div class="d-inline-flex mb-lg-5">
@@ -66,7 +70,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5 signed-in" style="display: none;">
         <div class="container">
             <div class="section-title">
                 <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h4>
@@ -94,7 +98,7 @@
     <!-- About End -->
 
     <!-- Footer Start -->
-    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top signed-in" style="display: none;">
         <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
@@ -128,9 +132,14 @@
     </div>
     <!-- Footer End -->
 
+    <div class="signed-out" style="display: none;" id="alert-pop-up">
+        <h1>Login Required</h1>
+        <p>To use our services, please log in</p>
+        <p>If you don't have any account, create one</p>
+    </div>
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top signed-in" style="display: none;"><i class="fa fa-angle-double-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
@@ -149,6 +158,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script type="module" src="./js/auth.js"></script>
 </body>
 
 </html>

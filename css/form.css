@@ -1,71 +1,108 @@
-.main-parent {
-    width: 100%;
-    height: 100vh;
-    /* background-image: url(https://goodfit.vn/wp-content/uploads/2021/03/maxresdefault-2-1024x576.jpg); */
-    background-repeat: no-repeat;
+body{
+    background: linear-gradient(rgba(109, 162, 166, 0.5), rgba(109, 162, 166, 0.5)),url(../img/background.jpg);;
+    background-position: center;
     background-size: cover;
-    background-position: top;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
 }
 
-.main-parent .form-wrap {
-    width: 450px;
-    background: rgb(255 255 255 / 75%);
-    border-radius: 10px;
-    padding: 35px 40px;
-    backdrop-filter: blur(5px);
-}
-
-.form-wrap form h1 {
-    font-family: 'Acme', sans-serif;
-    font-variant: small-caps;
-    font-size: 45px;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.form-wrap form h1 span {
-    font-variant: small-caps;
-    color: #f57224;
-}
-
-.form-wrap form .single-input input {
+.form-container{
+    height: 100%;
     width: 100%;
-    padding: 14px 10px;
-    border: 1px solid rgba(0, 0, 0, 0.3521);
-    outline: none;
-    background: transparent;
-    margin-bottom: 10px;
-    font-size: 15px;
-    font-family: 'Roboto', sans-serif;
-}
-
-.form-wrap form .submit-button {
-    text-align: center;
-}
-
-.form-wrap form .submit-button button.button {
-    padding: 13px 30px;
-    background-color: #f57224;
-    outline: none;
-    border: none;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.form-wrap form .account-have {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    font-size: 14px;
+}
+
+.form-container h1{
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 3px;
     margin-top: 10px;
 }
 
-.form-wrap form .account-have a {
-    color: rgb(34, 34, 34);
+.form-box{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background-color: white;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 1px 1px 31px -4px rgba(255,255,255,0.62);
+    -webkit-box-shadow: 1px 1px 31px -4px rgba(255,255,255,0.62);
+    -moz-box-shadow: 1px 1px 31px -4px rgba(255,255,255,0.62);
+}
+
+.button-box{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 1px 1px 31px -4px rgba(48,184,194,0.62);
+    -webkit-box-shadow: 1px 1px 31px -4px rgba(48,184,194,0.62);
+    -moz-box-shadow: 1px 1px 31px -4px rgba(48,184,194,0.62);
+    border-radius: 30px;
+}
+
+.toggle-btn{
+    padding: 10px 25px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
     text-decoration: none;
 }
+
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background-color: #30b8c2;
+    border-radius: 30px;
+    transition: 0.5s;
+
+}
+
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+}
+
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid #30b8c2;
+    outline: none;
+    background: transparent;
+}
+
+.submit-button{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background-color: #30b8c2;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+    margin-top: 20px;
+}
+
+#login-form{
+    left: 50px;
+}
+
+#signup-form{
+    left: 450px;
+}
+
+button:focus {outline:0;}
