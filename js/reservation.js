@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, doc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -29,7 +29,7 @@ let cusName = document.getElementById("cusName");
 let cusPhone = document.getElementById("cusPhone");
 let cusQuantity = document.getElementById("cusQuantity");
 let cusAddress = document.getElementById("cusAddress");
-let cusDrink = document.getElementById("cusDrink");
+let cusDrink = document.getElementById("drinks-list");
 
 const loggedOutLinks = document.querySelectorAll('.signed-out');
 const loggedInLinks = document.querySelectorAll('.signed-in');
@@ -59,6 +59,16 @@ logout.addEventListener('click', (e) => {
 
 });
 
+const drinkList = document.getElementById("drinks-list");
+
+const querySnapshot = await getDocs(collection(db, "drinks"));
+querySnapshot.forEach((doc) => {
+  console.log(`${doc.id} => ${doc.data().drinkName}`);
+  const selectElement = document.createElement('option');
+  selectElement.value = `${doc.data().drinkName}`;
+  selectElement.innerHTML = `${doc.data().drinkName} - $${doc.data().price}`
+  drinkList.appendChild(selectElement);
+});
 
 document.getElementById("submit-order").onclick = async () => {
     try {
@@ -76,3 +86,5 @@ document.getElementById("submit-order").onclick = async () => {
     }
 
 }
+
+

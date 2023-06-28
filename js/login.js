@@ -36,7 +36,13 @@ signupForm.addEventListener('submit', (e) => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            alert("Account Created Successfully!")
+            alert("Account Created Successfully!");
+            var login = document.getElementById("login-form");
+            var signup = document.getElementById("signup-form");
+            var switchButton = document.getElementById("btn");
+            login.style.left = "50px";
+            signup.style.left = "450px";
+            switchButton.style.left = "0px";
 
             // ...
         })
@@ -60,6 +66,7 @@ loginForm.addEventListener('submit', (e) => {
             // ...
         })
         .catch((error) => {
+            alert("Wrong email or password");
             const errorCode = error.code;
             const errorMessage = error.message;
         });

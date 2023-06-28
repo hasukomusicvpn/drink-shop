@@ -3,19 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Moonbucks - Reservation</title>
+    <title>KOPPEE - Coffee Shop HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free Website Template" name="keywords">
     <meta content="Free Website Template" name="description">
 
     <!-- Favicon -->
-    <link href="./img/bubble-tea.png" rel="icon shortcut" type="icon">
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -25,9 +23,7 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link rel="stylesheet" href="./css/reservation.css">
     <link href="css/style.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -43,16 +39,13 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
                     <a href="index.html" class="nav-item nav-link signed-in" style="display: none;">Home</a>
-                    <a href="about.html" class="nav-item nav-link signed-in" style="display: none;">About</a>
+                    <a href="about.html" class="nav-item nav-link signed-in"style="display: none;">About</a>
                     <a href="menu.html" class="nav-item nav-link signed-in" style="display: none;">Menu</a>
-                    <a href="reservation.html" class="nav-item nav-link signed-in active"
-                        style="display: none;">Reservation</a>
+                    <a href="reservation.html" class="nav-item nav-link signed-in" style="display: none;">Reservation</a>
                     <a href="login.html" class="nav-item nav-link signed-out" style="display: none;">Log In</a>
                     <a href="orders.html" class="nav-item nav-link signed-in" style="display: none;">My Orders</a>
-                    <a href="#" class="nav-item nav-link signed-in" style="display: none;"
-                        id="account-details">Account</a>
-                    <a href="#" class="nav-item nav-link signed-in" id="logout-button" style="display: none;">Sign
-                        Out</a>
+                    <a href="#" class="nav-item nav-link signed-in" style="display: none;">Account</a>
+                    <a href="#" class="nav-item nav-link signed-in" id="logout-button" style="display: none;">Sign Out</a>
                 </div>
             </div>
         </nav>
@@ -60,90 +53,84 @@
     <!-- Navbar End -->
 
 
-    <div class="pop-up">
-        <h2>Account details</h2>
-        <p id="user-detail"></p>
-        <button id="close-button" class="btn btn-primary">OK</button>
-    </div>
-
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom signed-in" style="display: none;">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
-            style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Reservation</h1>
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Services</h1>
             <div class="d-inline-flex mb-lg-5">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Reservation</p>
+                <p class="m-0 text-white">Services</p>
             </div>
         </div>
     </div>
     <!-- Page Header End -->
 
 
-    <!-- Reservation Start -->
-    <div class="container-fluid my-5 signed-in" style="display: none;">
+    <!-- Service Start -->
+    <div class="container-fluid pt-5 signed-in" style="display: none;">
         <div class="container">
-            <div class="reservation position-relative overlay-top overlay-bottom">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 my-5 my-lg-0">
-                        <div class="p-5">
-                            <div class="mb-4">
-                                <h1 class="display-3 text-primary">30% OFF</h1>
-                                <h1 class="text-white">For Online Reservation</h1>
-                            </div>
-                            <p class="text-white">You will get 30% discount for all the drink you buy via our website.
-                                Don't worry, all your information provide will be safe.
-                            </p>
-
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Services</h4>
+                <h1 class="display-4">Fresh & Organic Beans</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-1.jpeg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-truck service-icon"></i>Fastest Door Delivery</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="text-center p-5" style="background: rgba(144, 213, 218, 0.8);">
-                            <h1 class="text-white mb-4 mt-5">Book Your Drink</h1>
-                            <div class="mb-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control bg-transparent border-primary p-4"
-                                        placeholder="Full Name" required id="cusName" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" class="form-control bg-transparent border-primary p-4"
-                                        placeholder="Phone Number" required id="cusPhone" />
-                                </div>
-                                <div type="text"
-                                    class="form-group form-control bg-transparent border-primary p-4 no-text-center"
-                                    placeholder="Drink" id="cusDrink" />
-                                <select name="drinks" id="drinks-list">
-                                    <option value="">Select A Drink</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="form-control bg-transparent border-primary p-4"
-                                    placeholder="Quantity" required id="cusQuantity" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control bg-transparent border-primary p-4"
-                                    placeholder="Your Address" required id="cusAddress" />
-                            </div>
-
-
-
-                            <button class="btn btn-primary btn-block font-weight-bold py-3" id="submit-order">Book
-                                Now</button>
-
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-2.jpeg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-coffee service-icon"></i>Fresh Coffee Beans</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-3.jpeg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-award service-icon"></i>Best Quality Coffee</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="img/service-4.jpeg" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-table service-icon"></i>Online Table Booking</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    <!-- Reservation End -->
+    <!-- Service End -->
 
 
     <!-- Footer Start -->
-    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top signed-in"
-        style="display: none;">
+    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top signed-in" style="display: none;">
         <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
@@ -155,12 +142,9 @@
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
                 <p>Amet elitr vero magna sed ipsum sit kasd sea elitr lorem rebum</p>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
-                            class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
@@ -180,6 +164,7 @@
     </div>
     <!-- Footer End -->
 
+
     <div class="signed-out" style="display: none;" id="alert-pop-up">
         <h1>Login Required</h1>
         <p>To use our services, please log in</p>
@@ -187,8 +172,7 @@
     </div>
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top signed-in" style="display: none;"><i
-            class="fa fa-angle-double-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top signed-in" style="display: none;"><i class="fa fa-angle-double-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
@@ -206,8 +190,8 @@
     <script src="mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="./js/reservation.js"></script>
+    <script src="js/main.js"></script>
+    <script type="module" src="./js/auth.js"></script>
 </body>
 
 </html>

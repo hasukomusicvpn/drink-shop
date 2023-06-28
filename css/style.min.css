@@ -2215,7 +2215,8 @@ pre code {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-radius: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2333,6 +2334,7 @@ select.form-control:focus::-ms-value {
   font-size: .875rem;
   line-height: 1.5
 }
+
 
 .form-control-plaintext {
   display: block;
@@ -2778,13 +2780,14 @@ fieldset:disabled a.btn {
 .btn-primary {
   color: #fff;
   background-color: #70c0c6;
-  border-color: #70c0c6
+  border-color: #70c0c6;
+  border-radius: 10px;
 }
 
 .btn-primary:hover {
   color: #fff;
   background-color: #30b8c2;
-  border-color: #30b8c2
+  border-color: #30b8c2;
 }
 
 .btn-primary:focus,
@@ -2795,6 +2798,7 @@ fieldset:disabled a.btn {
   box-shadow: 1px 6px 31px -4px rgba(240, 252, 252, 0.66);
   -webkit-box-shadow: 1px 6px 31px -4px rgba(240, 252, 252, 0.66);
   -moz-box-shadow: 1px 6px 31px -4px rgba(240, 252, 252, 0.66);
+
 }
 
 .btn-primary.disabled,
@@ -2823,7 +2827,8 @@ fieldset:disabled a.btn {
 .btn-secondary {
   color: #fff;
   background-color: #30b8c2;
-  border-color: #30b8c2
+  border-color: #30b8c2;
+  border-radius: 10px;
 }
 
 .btn-secondary:hover {

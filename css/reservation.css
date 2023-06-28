@@ -1,3 +1,21 @@
-div[class="form-group"] input{
-    color: white !important;
+.no-text-center {
+    text-align: left;
+}
+
+#drinks-list {
+    color: #6c757d;
+    background: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+    bottom: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.reservation{
+    border-radius: 15px !important;
+    overflow: hidden;
 }

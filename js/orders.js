@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, where, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -65,7 +65,7 @@ onAuthStateChanged(auth, (user) => {
 const logout = document.querySelector('#logout-button');
 logout.addEventListener('click', (e) => {
     signOut(auth).then(() => {
-        //user signed in
+        //user signed out
     }).catch((error) => {
         // An error happened.
     });
@@ -73,4 +73,9 @@ logout.addEventListener('click', (e) => {
 })
 
 
+document.getElementById("deleteSubmit").onclick = async() => {
+    const drinkID = document.getElementById("deleteInput");
+    await deleteDoc(doc(db, "orders", drinkID.value));
+    alert("Delete Successful!");
+}
 
