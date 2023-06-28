@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+    <title>Moonbucks - Login Admin</title>
+
+    <!-- Favicon -->
+    <link href="./img/bubble-tea.png" rel="icon shortcut" type="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+
+
+    <link rel="stylesheet" href="./drink-shop/css/form.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>moonbucks</h1>
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="logIn()">Log In</button>
+                <button type="button" class="toggle-btn" onclick="signUp()">Sign Up</button>
+            </div>
+            <form id="login-form" class="input-group">
+                <input type="text" name="email" class="input-field" placeholder="Login Email" required id="login-email">
+                <input type="password" name="password" class="input-field" placeholder="Password" required id="login-password">
+                <button class="submit-button" id="login-button" type="submit">Log In</button>
+            </form>
+            <form id="signup-form" class="input-group">
+                <input type="text" name="email" class="input-field" placeholder="Email Address" required id="signup-email">
+                <input type="password" name="password" class="input-field" placeholder="Password" required id="signup-password">
+                <button class="submit-button" id="signup-button" type="submit">Sign Up</button>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        var login = document.getElementById("login-form");
+        var signup = document.getElementById("signup-form");
+        var switchButton = document.getElementById("btn");
+
+        function signUp() {
+            login.style.left = "-400px";
+            signup.style.left = "50px";
+            switchButton.style.left = "110px";
+        }
+
+        function logIn() {
+            login.style.left = "50px";
+            signup.style.left = "450px";
+            switchButton.style.left = "0px";
+        }
+    </script>
+    <script src="./drink-shop/js/LoginAmdin.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+
+</body>
+
+</html>
