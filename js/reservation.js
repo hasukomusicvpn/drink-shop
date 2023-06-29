@@ -30,6 +30,7 @@ let cusPhone = document.getElementById("cusPhone");
 let cusQuantity = document.getElementById("cusQuantity");
 let cusAddress = document.getElementById("cusAddress");
 let cusDrink = document.getElementById("drinks-list");
+let orderForm = document.getElementById("order-form")
 
 const loggedOutLinks = document.querySelectorAll('.signed-out');
 const loggedInLinks = document.querySelectorAll('.signed-in');
@@ -63,7 +64,6 @@ const drinkList = document.getElementById("drinks-list");
 
 const querySnapshot = await getDocs(collection(db, "drinks"));
 querySnapshot.forEach((doc) => {
-  console.log(`${doc.id} => ${doc.data().drinkName}`);
   const selectElement = document.createElement('option');
   selectElement.value = `${doc.data().drinkName}`;
   selectElement.innerHTML = `${doc.data().drinkName} - $${doc.data().price}`
@@ -81,6 +81,7 @@ document.getElementById("submit-order").onclick = async () => {
             uid: localStorage.getItem("user uid"),
         });
         alert('Order Successful!');
+
     } catch (e) {
         console.error("Error adding document: ", e);
     }

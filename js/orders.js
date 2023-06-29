@@ -3,6 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebas
 import { getFirestore, collection, addDoc, getDocs, query, where, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,7 +17,7 @@ const firebaseConfig = {
     storageBucket: "moon-buck-b20ed.appspot.com",
     messagingSenderId: "880428101989",
     appId: "1:880428101989:web:1f424996a55ae93c78f18c",
-    measurementId: "G-0LQNP9KPNC"
+    measurementId: "G-0LQNP9KPNC",
 };
 
 // Initialize Firebase
@@ -26,8 +28,9 @@ const auth = getAuth();
 
 
 const q = query(collection(db, "orders"), where("uid", "==", localStorage.getItem("user uid")));
+const orderResult = document.getElementById("my-orders");
 
-const querySnapshot = await getDocs(q);
+let querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     const myOrder = document.createElement('tr');
@@ -39,8 +42,8 @@ querySnapshot.forEach((doc) => {
   <td>${doc.data().address}</td>
   <td>${doc.id}</td>
   `
-  const orderResult = document.getElementById("my-orders");
-  orderResult.appendChild(myOrder);
+
+    orderResult.appendChild(myOrder);
 });
 
 const loggedOutLinks = document.querySelectorAll('.signed-out');
@@ -73,9 +76,25 @@ logout.addEventListener('click', (e) => {
 })
 
 
-document.getElementById("deleteSubmit").onclick = async() => {
+document.getElementById("deleteSubmit").onclick = async () => {
     const drinkID = document.getElementById("deleteInput");
     await deleteDoc(doc(db, "orders", drinkID.value));
     alert("Delete Successful!");
+    orderResult.innerHTML = "";
+    let querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        const myOrder = document.createElement('tr');
+        myOrder.innerHTML = `
+      <th scope="row">${doc.data().name}</th>
+      <td>${doc.data().drink}</td>
+      <td>${doc.data().quantity}</td>
+      <td>${doc.data().phone}</td>
+      <td>${doc.data().address}</td>
+      <td>${doc.id}</td>
+      `
+        orderResult.appendChild(myOrder);
+    });
+    drinkID.value = '';
 }
 
