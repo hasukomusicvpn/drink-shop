@@ -2,3 +2,35 @@
     position: relative;
     left: 6%;
 }
+
+.no-text-center {
+    text-align: left;
+}
+
+#drinks-list {
+    color: #6c757d;
+    background: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+    bottom: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+#update-form{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    background: rgba(144, 213, 218, 0.7);
+    backdrop-filter: blur(10px);
+    display: none;
+    transition: display 0.3s;
+}
+

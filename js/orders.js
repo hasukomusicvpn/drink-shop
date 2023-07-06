@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, where, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, where, deleteDoc, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
@@ -27,7 +27,10 @@ const db = getFirestore(app);
 const auth = getAuth();
 
 
-const q = query(collection(db, "orders"), where("uid", "==", localStorage.getItem("user uid")));
+
+
+
+let q = query(collection(db, "orders"), where("uid", "==", localStorage.getItem("user uid")));
 const orderResult = document.getElementById("my-orders");
 
 let querySnapshot = await getDocs(q);
@@ -40,10 +43,12 @@ querySnapshot.forEach((doc) => {
   <td>${doc.data().quantity}</td>
   <td>${doc.data().phone}</td>
   <td>${doc.data().address}</td>
-  <td>${doc.id}</td>
+  <td><button class="btn btn-primary delete-button" id="${doc.id}-delete">Delete order</button></td>
+  <td><button class="btn btn-primary update-button" id="${doc.id}-update">Update order</button></td>
   `
-
     orderResult.appendChild(myOrder);
+    document.getElementById(`${doc.id}-delete`).addEventListener("click", () => orderDelete(doc.id));
+    document.getElementById(`${doc.id}-update`).addEventListener("click", () => orderUpdate(doc.id));
 });
 
 const loggedOutLinks = document.querySelectorAll('.signed-out');
@@ -75,26 +80,103 @@ logout.addEventListener('click', (e) => {
 
 })
 
-
-document.getElementById("deleteSubmit").onclick = async () => {
-    const drinkID = document.getElementById("deleteInput");
-    await deleteDoc(doc(db, "orders", drinkID.value));
-    alert("Delete Successful!");
-    orderResult.innerHTML = "";
-    let querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        const myOrder = document.createElement('tr');
-        myOrder.innerHTML = `
-      <th scope="row">${doc.data().name}</th>
-      <td>${doc.data().drink}</td>
-      <td>${doc.data().quantity}</td>
-      <td>${doc.data().phone}</td>
-      <td>${doc.data().address}</td>
-      <td>${doc.id}</td>
-      `
-        orderResult.appendChild(myOrder);
-    });
-    drinkID.value = '';
+async function orderDelete(id) {
+    if(confirm("Are you sure to delete this order") == true){
+        await deleteDoc(doc(db, "orders", id));
+        alert("Delete Successful!");
+        orderResult.innerHTML = "";
+        let q = query(collection(db, "orders"), where("uid", "==", localStorage.getItem("user uid")));
+        let querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            const myOrder = document.createElement('tr');
+            myOrder.innerHTML = `
+                <th scope="row">${doc.data().name}</th>
+                <td>${doc.data().drink}</td>
+                <td>${doc.data().quantity}</td>
+                <td>${doc.data().phone}</td>
+                <td>${doc.data().address}</td>
+                <td><button class="btn btn-primary delete-button" id="${doc.id}-delete">Delete order</button></td>
+                <td><button class="btn btn-primary update-button" id="${doc.id}-update">Update order</button></td>
+                
+            `
+    
+            orderResult.appendChild(myOrder);
+            document.getElementById(`${doc.id}-delete`).addEventListener("click", () => orderDelete(doc.id));
+            document.getElementById(`${doc.id}-update`).addEventListener("click", () => orderUpdate(doc.id));
+        });
+    }
 }
 
+
+
+async function orderUpdate(id) {
+    localStorage.setItem("order id", id);
+    const docRef = doc(db, "orders", id);
+    const docSnap = await getDoc(docRef);
+    let cusDrink = document.getElementById("drinks-list");
+
+    let querySnapshot = await getDocs(collection(db, "drinks"));
+    querySnapshot.forEach((doc) => {
+        const selectElement = document.createElement('option');
+        selectElement.value = `${doc.data().drinkName}`;
+        selectElement.innerHTML = `${doc.data().drinkName} - $${doc.data().price}`
+        cusDrink.appendChild(selectElement);
+    });
+    let cusName = document.getElementById("cusName");
+    let cusPhone = document.getElementById("cusPhone");
+    let cusQuantity = document.getElementById("cusQuantity");
+    let cusAddress = document.getElementById("cusAddress");
+    if (docSnap.exists()) {
+        cusName.value = docSnap.data().name;
+        cusPhone.value = docSnap.data().phone;
+        cusQuantity.value = docSnap.data().quantity;
+        cusAddress.value = docSnap.data().address;
+        cusDrink.value = docSnap.data().drink;
+    }
+    document.getElementById("update-form").style.display = "block";
+}
+
+document.getElementById("update-order").onclick = async() => {
+    let cusName = document.getElementById("cusName");
+    let cusPhone = document.getElementById("cusPhone");
+    let cusQuantity = document.getElementById("cusQuantity");
+    let cusAddress = document.getElementById("cusAddress");
+    let cusDrink = document.getElementById("drinks-list");
+    if(confirm("Are you sure to update this order?") == true){
+        let docRef = doc(db, "orders", localStorage.getItem("order id"));
+        const updateData = {
+            name: cusName.value,
+            phone: cusPhone.value,
+            quantity: cusQuantity.value,
+            address: cusAddress.value,
+            drink: cusDrink.value,
+        }
+        updateDoc(docRef, updateData);
+        orderResult.innerHTML = "";
+        let q = query(collection(db, "orders"), where("uid", "==", localStorage.getItem("user uid")));
+        let querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            const myOrder = document.createElement('tr');
+            myOrder.innerHTML = `
+                <th scope="row">${doc.data().name}</th>
+                <td>${doc.data().drink}</td>
+                <td>${doc.data().quantity}</td>
+                <td>${doc.data().phone}</td>
+                <td>${doc.data().address}</td>
+                <td><button class="btn btn-primary delete-button" id="${doc.id}-delete">Delete order</button></td>
+                <td><button class="btn btn-primary update-button" id="${doc.id}-update">Update order</button></td>
+                
+            `
+    
+            orderResult.appendChild(myOrder);
+            document.getElementById(`${doc.id}-delete`).addEventListener("click", () => orderDelete(doc.id));
+            document.getElementById(`${doc.id}-update`).addEventListener("click", () => orderUpdate(doc.id));
+        });
+        localStorage.removeItem("order id");
+    } else {
+        document.getElementById("update-form").style.display = "none";
+    }
+
+}

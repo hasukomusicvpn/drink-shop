@@ -24,10 +24,11 @@ const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const auth = getAuth();
 
-
+let idArray = [];
 const querySnapshot = await getDocs(collection(db, "drinks"));
 querySnapshot.forEach((doc) => {
-    console.log(doc.data());
+    console.log(doc.id);
+    idArray.push(doc.id);
     let drinkOutput = document.createElement('div');
     drinkOutput.innerHTML = `
     <div class="drink-items special-signed-in">
@@ -45,7 +46,7 @@ querySnapshot.forEach((doc) => {
     const container = document.getElementById("container");
     container.appendChild(drinkOutput);
 });
-
+console.log(idArray);
 
 const loggedOutLinks = document.querySelectorAll('.signed-out');
 const loggedInLinks = document.querySelectorAll('.signed-in');

@@ -81,9 +81,14 @@ document.getElementById("submit-order").onclick = async () => {
             uid: localStorage.getItem("user uid"),
         });
         alert('Order Successful!');
+        document.getElementById("cusName").value = '';
+        document.getElementById("cusPhone").value = '';
+        document.getElementById("drinks-list").value = '';
+        document.getElementById("cusQuantity").value = '';
+        document.getElementById("cusAddress").value = '';
 
     } catch (e) {
-        console.error("Error adding document: ", e);
+
     }
 
 }

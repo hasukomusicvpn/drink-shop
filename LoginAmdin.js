@@ -73,19 +73,3 @@ loginForm.addEventListener('submit', (e) => {
 
 });
 
-
-const querySnapshot = await getDocs(collection(db, "drinks"));
-querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
-});
-document.getElementById("login-button").onclick = async() => {
-    try {
-        const docRef = await addDoc(collection(db, "drinks"), {
-            email: email.value,
-            password: password.value
-        });
-        console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-        console.error("Error adding document: ", e);
-    }
-}

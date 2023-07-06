@@ -13,7 +13,9 @@
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -21,7 +23,8 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="./css/orders.css">
@@ -44,11 +47,15 @@
                     <a href="index.html" class="nav-item nav-link signed-in" style="display: none;">Home</a>
                     <a href="about.html" class="nav-item nav-link signed-in" style="display: none;">About</a>
                     <a href="menu.html" class="nav-item nav-link signed-in" style="display: none;">Menu</a>
-                    <a href="reservation.html" class="nav-item nav-link signed-in" style="display: none;">Reservation</a>
+                    <a href="reservation.html" class="nav-item nav-link signed-in"
+                        style="display: none;">Reservation</a>
                     <a href="login.html" class="nav-item nav-link signed-out" style="display: none;">Log In</a>
-                    <a href="orders.html" class="nav-item nav-link signed-in active" style="display: none;">My Orders</a>
-                    <a href="#" class="nav-item nav-link signed-in" id="account-details" style="display: none;">Account</a>
-                    <a href="#" class="nav-item nav-link signed-in" id="logout-button" style="display: none;">Sign Out</a>
+                    <a href="orders.html" class="nav-item nav-link signed-in active" style="display: none;">My
+                        Orders</a>
+                    <a href="#" class="nav-item nav-link signed-in" id="account-details"
+                        style="display: none;">Account</a>
+                    <a href="#" class="nav-item nav-link signed-in" id="logout-button" style="display: none;">Sign
+                        Out</a>
                 </div>
             </div>
         </nav>
@@ -64,7 +71,8 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 position-relative overlay-bottom signed-in" style="display: none;">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+            style="min-height: 400px">
             <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Orders</h1>
             <div class="d-inline-flex mb-lg-5">
                 <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
@@ -90,7 +98,8 @@
                         <th scope="col">Quantity</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Address</th>
-                        <th scope="col">ID</th>
+                        <th scope="col" class="text-center">Delete</th>
+                        <th scope="col" class="text-center">Update</th>
                     </thead>
                     <tbody id="my-orders">
 
@@ -99,9 +108,35 @@
             </div>
         </div>
 
-        <div class="delete-container">
-            <input type="text" class="form-control bg-transparent" style="width: 300px; display: inline;" name="delete" id="deleteInput" placeholder="Put the ID here">
-            <button id="deleteSubmit" class="btn-primary btn">Delete</button>
+        <div class="mb-5 text-center" id="update-form" >
+            <h2 class="text-white mb-4">Update Your Order</h2>
+            <div class="form-group">
+                <input type="text" class="form-control bg-transparent border-primary p-4 delete" placeholder="Full Name"
+                    required id="cusName" />
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control bg-transparent border-primary p-4 delete"
+                    placeholder="Phone Number" required id="cusPhone" />
+            </div>
+            <div type="text" class="form-group form-control bg-transparent border-primary p-4 no-text-center"
+                placeholder="Drink" id="cusDrink">
+                <select name="drinks" id="drinks-list" class="delete">
+                    <option value="">Select A Drink</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control bg-transparent border-primary p-4 delete"
+                    placeholder="Quantity" required id="cusQuantity" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control bg-transparent border-primary p-4 delete"
+                    placeholder="Your Address" required id="cusAddress" />
+            </div>
+
+
+
+            <button class="btn btn-primary btn-block font-weight-bold py-3" id="update-order">Update Now</button>
+
         </div>
     </div>
     <!-- About End -->
@@ -109,7 +144,8 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top signed-in" style="display: none;">
+    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top signed-in"
+        style="display: none;">
         <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
@@ -121,9 +157,12 @@
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
                 <p>Amet elitr vero magna sed ipsum sit kasd sea elitr lorem rebum</p>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
+                            class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
@@ -150,7 +189,8 @@
     </div>
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top signed-in" style="display: none;"><i class="fa fa-angle-double-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top signed-in" style="display: none;"><i
+            class="fa fa-angle-double-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
@@ -164,12 +204,13 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+
 
     <!-- Template Javascript -->
     <script type="module" src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script type="module" src="./js/orders.js"></script>
 </body>
 
