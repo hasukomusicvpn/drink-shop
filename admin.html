@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
+    <link rel="stylesheet" href="css/admin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/style.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <div>
@@ -31,17 +35,55 @@
                     <th scope="col">Quantity</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Address</th>
-                    <th scope="col">ID</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Update</th>
                 </tr>
             </thead>
-            <tbody id="order-list"></tbody>
+            <tbody id="my-orders"></tbody>
         </table>
-        <div class="delete-container">
-            <input type="text" name="delete" id="deleteInput" placeholder="Put the ID here">
-            <button id="deleteSubmit">Delete</button>
+
+        <div class="mb-5 text-center" id="update-form">
+            <h2 class="text-white mb-4">Update Your Order</h2>
+            <div class="form-group">
+                <input type="text" class="form-control bg-transparent border-primary p-4 delete" placeholder="Full Name" required id="cusName" />
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control bg-transparent border-primary p-4 delete" placeholder="Phone Number" required id="cusPhone" />
+            </div>
+            <div type="text" class="form-group form-control bg-transparent border-primary p-4 no-text-center" placeholder="Drink" id="cusDrink">
+                <select name="drinks" id="drinks-list" class="delete">
+                    <option value="">Select A Drink</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control bg-transparent border-primary p-4 delete" placeholder="Quantity" required id="cusQuantity" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control bg-transparent border-primary p-4 delete" placeholder="Your Address" required id="cusAddress" />
+            </div>
+
+
+
+            <button class="btn btn-primary btn-block font-weight-bold py-3" id="update-order">Update Now</button>
+
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <div class="container3">
+
+
+    </div>
+
     <script type="module" src="./js/admin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>
