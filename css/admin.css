@@ -28,3 +28,11 @@
     display: none;
     transition: display 0.3s;
 }
+
+tbody#drinks {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+tbody td {
+    width: 30%;
+}

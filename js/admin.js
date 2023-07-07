@@ -156,3 +156,15 @@ document.getElementById("update-order").onclick = async() => {
         document.getElementById("update-form").style.display = "none";
     }
 }
+
+const Snapshot = await getDocs(collection(db, "drinks"));
+Snapshot.forEach((doc) => {
+    const drinkRow = document.createElement('tr');
+    drinkRow.innerHTML = `
+        <th scope="row">${doc.data().drinkName}</th>
+        <td>${doc.data().price}</td>
+        <td>${doc.data().description}</td>
+        <td>${doc.data().image}</td>
+    `
+    document.getElementById("drinks").appendChild(drinkRow);
+});
