@@ -164,7 +164,7 @@ Snapshot.forEach((doc) => {
         <th scope="row">${doc.data().drinkName}</th>
         <td>${doc.data().price}</td>
         <td>${doc.data().description}</td>
-        <td>${doc.data().image}</td>
+        <td><a href="${doc.data().image}"> Hinh Ảnh</a></td>
     `
     document.getElementById("drinks").appendChild(drinkRow);
 });
