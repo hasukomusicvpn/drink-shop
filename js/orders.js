@@ -96,8 +96,8 @@ async function orderDelete(id) {
                 <td>${doc.data().quantity}</td>
                 <td>${doc.data().phone}</td>
                 <td>${doc.data().address}</td>
-                <td><button class="btn btn-primary delete-button" id="${doc.id}-delete">Delete order</button></td>
-                <td><button class="btn btn-primary update-button" id="${doc.id}-update">Update order</button></td>
+                <td class="text-center"><button class="btn btn-primary delete-button" id="${doc.id}-delete">Delete order</button></td>
+                <td class="text-center"><button class="btn btn-primary update-button" id="${doc.id}-update">Update order</button></td>
                 
             `
     
@@ -153,6 +153,7 @@ document.getElementById("update-order").onclick = async() => {
             drink: cusDrink.value,
         }
         updateDoc(docRef, updateData);
+        document.getElementById("update-form").style.display = "none";
         orderResult.innerHTML = "";
         let q = query(collection(db, "orders"), where("uid", "==", localStorage.getItem("user uid")));
         let querySnapshot = await getDocs(q);
@@ -165,8 +166,8 @@ document.getElementById("update-order").onclick = async() => {
                 <td>${doc.data().quantity}</td>
                 <td>${doc.data().phone}</td>
                 <td>${doc.data().address}</td>
-                <td><button class="btn btn-primary delete-button" id="${doc.id}-delete">Delete order</button></td>
-                <td><button class="btn btn-primary update-button" id="${doc.id}-update">Update order</button></td>
+                <td class="text-center"><button class="btn btn-primary delete-button" id="${doc.id}-delete">Delete order</button></td>
+                <td class="text-center"><button class="btn btn-primary update-button" id="${doc.id}-update">Update order</button></td>
                 
             `
     
@@ -175,6 +176,7 @@ document.getElementById("update-order").onclick = async() => {
             document.getElementById(`${doc.id}-update`).addEventListener("click", () => orderUpdate(doc.id));
         });
         localStorage.removeItem("order id");
+
     } else {
         document.getElementById("update-form").style.display = "none";
     }
